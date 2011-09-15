@@ -1,0 +1,32 @@
+<html>
+<head>
+	<title>Tommy</title>
+	<meta http-equiv="refresh" content="30;url=/">
+	<link href='styles.css' rel='stylesheet' type='text/css' />
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js' type='text/javascript'></script>
+	<script>
+	  function show_stats(element){
+      $(element).find('.build_stats').toggle();
+	  };
+	</script>
+</head>
+<body>
+  <div id="wrapper">
+    <% @projects.in_groups_of(4) do |group|  %>
+      <% group.each_with_index do |project, index| %>
+        <% if project %>
+          <span class="project <%= css_for_project(project) %>" onclick="show_stats(this);">
+            <p class="build_number"><a href="<%= project.last_build_url %>" target="_blank" title="View Build">#<%= project.last_build_number %></a></p>
+            <ul class="build_stats" style="display:none;">
+              <li><%= project.health_report %></li>
+            </ul>
+            <p class="project_name">&nbsp;&nbsp;&nbsp;<%= project.name %> :: <em><a href="<%= project.last_build_url %>" target="_blank">build</a> &middot; <a href="<%= project.last_complete_url %>" target="_blank">complete</a> &middot; <a href="<%= project.last_failed_url %>" target="_blank">failed</a></em></p>
+          </span>
+        <% else %>
+          <span class="project inactive"></span>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</body>
+</html>

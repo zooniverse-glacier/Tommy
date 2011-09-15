@@ -1,0 +1,95 @@
+body{
+  padding:0px;
+  margin:0px;
+}
+
+#wrapper{
+  width:100%;
+  margin:0px auto;
+}
+
+.project{
+  position:relative;
+  width:25%;
+  height: 225px;
+  border-left:1px solid black;
+  border-bottom: 1px solid black;
+  margin-left: -1px;
+  float: left;
+  }
+  
+.green{
+  background-color:#00ff33;
+}
+
+.yellow_green{
+ background-color:#ccff66; 
+}
+
+.red{
+  background-color: red;
+}
+
+.yellow{
+  background-color: yellow;
+}
+
+.yellow_orange{
+  background-color: #ffb428;
+}
+
+.orange{
+  background-color: #ff6600;
+}
+
+.inactive{
+  background-color:gray;
+}
+
+.build_number{
+  font-size:55px;
+  padding:0px;
+  margin: 0px;
+  position:absolute;
+  top:5px;
+  left:5px;
+  font-family: georgia;
+}
+
+.build_number a{
+  text-decoration:none;
+  color: black;
+}
+
+.build_number a:hover{
+  text-decoration:underline;
+}
+
+.project_name{
+  position:absolute;
+  font-family: helvetica;
+  font-size: 12px;
+  bottom:0px;
+  padding:15px 0px;
+  background: black;
+  color: white;
+  width: 100%;
+  border-top: 1px solid silver;
+  border-bottom: 1px solid silver;
+}
+
+.project_name a{
+  color: yellow;
+  text-decoration:none;
+}
+
+.build_stats{
+  padding-top:80px;
+  font-family:helvetica;
+  font-size:12px;
+}
+
+.row{
+  width:100%;
+  display: table-row;
+}
