@@ -10,8 +10,8 @@ Put your Hudson URL in place (HUDSON_URL) and boot the app. If you are password 
 
   - Remove excessive dependencies
   - Write some tests
-  - Actually test against Jenkins (have only tested )
+  - Actually test against Jenkins (have only tested against a Hudson install)
 
 ## Questions?
 
-Catch me on Twitter as @arfon
+Catch me on Twitter as [@arfon](http://twitter.com/arfon "Twitter").
