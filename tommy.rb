@@ -5,7 +5,7 @@ require 'crack'
 require 'hashie'
 require 'erb'
 
-HUDSON_URL = 'http://username:password@my.hudsonurl.com'
+HUDSON_URL = ENV['HUDSON_URL'] || 'http://username:password@my.hudsonurl.com'
 
 class Project < Hashie::Dash
   property :name
