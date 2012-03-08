@@ -58,18 +58,20 @@ helpers do
     score = project.build_score
     if project.is_green?
       if score == 100
-        "green"
+        "best"
       elsif score >= 80
-        "yellow_green"
+        "better"
       elsif score >= 60
-        "yellow"
+        "good"
       elsif score >= 40
-        "yellow_orange"
+        "bad"
       elsif score >= 20
-        "orange"
+        "worse"
       end
+    elsif project.is_building?
+      "building"
     else
-      "red"
+      "worst"
     end
   end
 end

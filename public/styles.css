@@ -1,95 +1,148 @@
-body{
-  padding:0px;
-  margin:0px;
+@-webkit-keyframes warning {
+    0% {opacity: 1}
+   50% {opacity: 0.75}
+  100% {opacity: 1}
 }
 
-#wrapper{
-  width:100%;
-  margin:0px auto;
+html {
+  background: #000;
+  font: 14px "Helvetica Neue", Arial, sans-serif;
+  height: 100%;
 }
 
-.project{
-  position:relative;
-  width:25%;
-  height: 225px;
-  border-left:1px solid black;
-  border-bottom: 1px solid black;
-  margin-left: -1px;
-  float: left;
+  body {
+    height: 100%;
+    margin: 0px;
+    overflow: auto;
   }
-  
-.green{
-  background-color:#00ff33;
-}
 
-.yellow_green{
- background-color:#ccff66; 
-}
+    #wrapper {
+      box-sizing: border-box;
+      border: 10px solid #000;
+      height: 100%;
+    }
 
-.red{
-  background-color: red;
-}
+    .ipad-scale #wrapper {
+      -webkit-transform: scaleX(0.533);
+      -webkit-transform-origin-x: 0;
+      width: 187.5%;
+    }
 
-.yellow{
-  background-color: yellow;
-}
+      .project {
+        background-image:
+          -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.25));
+        border: 5px solid #000;
+        box-sizing: border-box;
+        float: left;
+        min-height: 45px;
+        padding: 5px 10px;
+        position: relative;
+        width: 33.3%;
+      }
 
-.yellow_orange{
-  background-color: #ffb428;
-}
+      @media screen and (max-width: 800px) {
+        .project {
+          width: 50%;
+        }
+      }
 
-.orange{
-  background-color: #ff6600;
-}
+      @media screen and (max-width: 500px) {
+        .project {
+          width: 100%;
+        }
+      }
 
-.inactive{
-  background-color:gray;
-}
+      .project.with-details {
+        z-index: 2;
+      }
 
-.build_number{
-  font-size:55px;
-  padding:0px;
-  margin: 0px;
-  position:absolute;
-  top:5px;
-  left:5px;
-  font-family: georgia;
-}
+      .project.building {background-color: #999;}
+      .project.best     {background-color: #0f0;}
+      .project.better   {background-color: #8f0;}
+      .project.good     {background-color: #ff0;}
+      .project.bad      {background-color: #f80;}
+      .project.worse    {background-color: #f00;}
+      .project.worst    {
+        -webkit-animation: warning 1s infinite ease-in-out;
+        background-color: #f00;
+        z-index: 1;
+      }
 
-.build_number a{
-  text-decoration:none;
-  color: black;
-}
+        .project > .heading {
+          font-size: 18px;
+        }
 
-.build_number a:hover{
-  text-decoration:underline;
-}
+          .project > .heading > .name {
+            color: #fff;
+            display: inline-block;
+            font-weight: bold;
+            max-width: 80%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+            white-space: nowrap;
+          }
 
-.project_name{
-  position:absolute;
-  font-family: helvetica;
-  font-size: 12px;
-  bottom:0px;
-  padding:15px 0px;
-  background: black;
-  color: white;
-  width: 100%;
-  border-top: 1px solid silver;
-  border-bottom: 1px solid silver;
-}
+          .project > .heading > .build-number {
+            color: #000;
+            float: right;
+            font-weight: bold;
+            text-decoration: none;
+            opacity: 0.33;
+          }
 
-.project_name a{
-  color: yellow;
-  text-decoration:none;
-}
+        .project > .details {
+          background: rgba(0, 0, 0, 0.9);
+          border-radius: 3px;
+          box-shadow:
+            0 0 1px rgba(255, 255, 255, 0.5) inset,
+            0 3px 10px #000;
+          color: #fff;
+          display: none;
+          left: 10px;
+          padding: 10px;
+          position: absolute;
+          top: 35px;
+        }
 
-.build_stats{
-  padding-top:80px;
-  font-family:helvetica;
-  font-size:12px;
-}
+        .project.with-details > .details {
+          display: block;
+        }
 
-.row{
-  width:100%;
-  display: table-row;
-}
+          .project > .details:before {
+            border: 8px solid transparent;
+            bottom: 100%;
+            border-bottom-color: rgba(0, 0, 0, 0.8);
+            content: " ";
+            left: 4%;
+            margin-bottom: -3px;
+            margin-left: -4px;
+            position: absolute;
+          }
+
+          .project > .details > .health {
+            margin: 10px;
+            white-space: nowrap;
+          }
+
+          .project > .details > .actions {
+            margin: 5px;
+            text-align: center;
+          }
+
+            .project > .details > .actions > a {
+              background: #444;
+              border-radius: 15px;
+              box-shadow:
+                0 1px 0 rgba(255, 255, 255, 0.3) inset,
+                0 1px 0 #000;
+              color: #fff;
+              display: inline-block;
+              font-size: 10px;
+              letter-spacing: 1px;
+              margin-right: 2px;
+              padding: 2px 10px;
+              text-decoration: none;
+              text-shadow: 0 1px 0 #000;
+              text-transform: uppercase;
+            }
