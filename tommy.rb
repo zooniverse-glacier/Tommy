@@ -16,6 +16,7 @@ class Project < Hashie::Dash
   property :health_report
   property :last_complete_url
   property :last_failed_url
+  property :colour
   
   def self.parse_incoming_json(json)
     returned_projects = []
@@ -29,7 +30,8 @@ class Project < Hashie::Dash
                                         :last_stable_build => (project['lastStableBuild'].blank? ? "" : project['lastStableBuild']['number']),
                                         :health_report => project['healthReport'].first['description'],
                                         :last_complete_url => (project['lastCompletedBuild'].blank? ? "" : project['lastCompletedBuild']['url']),
-                                        :last_failed_url => (project['lastFailedBuild'].blank? ? "" : project['lastFailedBuild']['url'] ))
+                                        :last_failed_url => (project['lastFailedBuild'].blank? ? "" : project['lastFailedBuild']['url'] ),
+                                        :colour => project['color'])
     end
     
     return returned_projects
@@ -37,6 +39,10 @@ class Project < Hashie::Dash
   
   def is_green?
     self.last_stable_build == self.last_build_number
+  end
+
+  def is_building?
+    self.colour.include?('anime')
   end
 end
 
