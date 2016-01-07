@@ -23,6 +23,8 @@ class Project < Hashie::Dash
     projects = json['jobs']
     
     projects.each do |project|
+      next if !project['buildable']
+
       returned_projects << Project.new( :name => project['displayName'].gsub('-', ' '),
                                         :build_score => project['healthReport'].first['score'].to_i,
                                         :last_build_number => project['builds'].first['number'],
